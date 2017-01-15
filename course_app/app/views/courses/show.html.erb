@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Course Name:</strong>
+  <%= @course.name %>
+</p>
+
+<p>
+  <strong>ID:</strong>
+    <%= @course.id %>
+</p>
+
+<h2>Students</h2>
+
+<% @course = Course.includes(:students).find(params[:id]) %>
+<% @course.students.each do |student| %>
+      <tr>
+          <td><%= "#{student.name}" %></td> <br />
+      </tr>
+<% end %>
+<%= link_to 'Edit', edit_course_path(@course) %> 
+<%= link_to 'Back', courses_path %>
